@@ -98,7 +98,6 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "15 Puzzle";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -16,7 +16,7 @@ namespace _15Puzzle
         private int MARGIN = 5;
         private int PADDING = 2;
         private int TILE_SIZE = 60;
-        private int ANIMATION_SPEED = 10; // ANIMATION_SPEED * TILE_SIZE
+        private int ANIMATION_SPEED = 2;
 
 
         public MainForm()
@@ -28,33 +28,8 @@ namespace _15Puzzle
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
-
-        //public TableLayoutPanel getBoardPanels()
-        //{
-        //    return this.boardPanel;
-            
-        //}
-
         internal void buildGame()
         {
-            //TableLayoutPanel board = boardPanel;
-
-            //for (int i = 1; i < Game.LENGTH * Game.LENGTH; i++)
-            //{
-            //    Label label = new Label();
-            //    label.Text = i.ToString();
-            //    label.BackColor = (i % 2 == 0) ? Color.White : Color.Red;
-            //    label.Dock = DockStyle.Fill;
-            //    label.Font = new Font(label.Font.FontFamily, 32);
-            //    board.Controls.Add(label);
-            //}
-
-            //Label label1 = new Label();
-            //label1.Dock = DockStyle.Fill;
-            //label1.Font = new Font(label1.Font.FontFamily, 32);
-            //board.Controls.Add(label1);
-
-
 
             //           two margins     padding between the tiles         all the tiles          just makes it look better
             int height = (MARGIN * 2) + (PADDING * (Game.LENGTH - 1)) + (Game.LENGTH * TILE_SIZE) - 2;
@@ -129,45 +104,21 @@ namespace _15Puzzle
 
         internal void updatePanels(string action, int tileValue)
         {
-            //TableLayoutPanel board = boardPanel;
-            //int[,] boardState = Game.getCurrentState().getState();
-            //for (int i = 0; i < Game.LENGTH; i++)
-            //{
-            //    for (int j = 0; j < Game.LENGTH; j++)
-            //    {
-            //        Control con = board.GetControlFromPosition(j, i);
-            //        int value = boardState[i, j];
-            //        if (value == 0)
-            //        {
-            //            con.Text = "";
-            //            con.BackColor = Color.Transparent;
-            //        }
-            //        else
-            //        {
-            //            con.Text = value.ToString();
-            //            con.BackColor = (value % 2 == 0) ? Color.White : Color.Red;
-            //        }
-            //    }
-            //}
 
             Control con = gamePanel.Controls.Find(tileValue.ToString(), true)[0];
             switch (action)
             {
                 case "left":
                     animatePanel(con, new Point(con.Location.X - (TILE_SIZE + PADDING), con.Location.Y));
-                    //con.Location = new Point(con.Location.X - (TILE_SIZE + PADDING), con.Location.Y);
                     break;
                 case "right":
                     animatePanel(con, new Point(con.Location.X + (TILE_SIZE + PADDING), con.Location.Y));
-                    //con.Location = new Point(con.Location.X + (TILE_SIZE + PADDING), con.Location.Y);
                     break;
                 case "up":
                     animatePanel(con, new Point(con.Location.X, con.Location.Y - (TILE_SIZE + PADDING)));
-                    //con.Location = new Point(con.Location.X, con.Location.Y - (TILE_SIZE + PADDING));
                     break;
                 case "down":
                     animatePanel(con, new Point(con.Location.X, con.Location.Y + (TILE_SIZE + PADDING)));
-                    //con.Location = new Point(con.Location.X, con.Location.Y + (TILE_SIZE + PADDING));
                     break;
             }
 
@@ -205,10 +156,6 @@ namespace _15Puzzle
                 control.Location = new Point(control.Location.X + delta_x, control.Location.Y + delta_y);
             }
 
-            //for (int i = 0; i < (TILE_SIZE + PADDING) / ANIMATION_SPEED; i++)
-            //{
-            //    control.Location = new Point(control.Location.X + delta_x, control.Location.Y + delta_y);
-            //}
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -294,19 +241,6 @@ namespace _15Puzzle
         private void winScreen()
         {
             System.Windows.Forms.MessageBox.Show("You Win!!!");
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            //Label label = new Label();
-            //label.Text = "15";
-            //label.BackColor = Color.Red;
-            //label.Font = new Font("Courier", 25);
-            //label.Size = new System.Drawing.Size(60, 60);
-            //label.TextAlign = ContentAlignment.MiddleCenter;
-            //label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            //label.Location = new Point(5, 5);
-            //gamePanel.Controls.Add(label);
         }
 
 
