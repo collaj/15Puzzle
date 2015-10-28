@@ -1,0 +1,2 @@
+## 15 Puzzle
+This program is a C# implementation of the 15 puzzle.  This program will also contain many features including the ability to resize the puzzle to be larger or smaller (e.g. 8-puzzle, 24-puzzle, etc.) and to have the program solve itself using various searching algorithms.
